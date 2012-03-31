@@ -1,19 +1,40 @@
+# encoding: utf-8
+
 require './name'
 
 describe 'Smart renamer' do
   data = [
-
     'preserves good names: foo (1981)  bar',
-    'allows for spaces in author names: foo bar (1981)  bar: foo bar (1981)  bar',
     'allows for spaces in title: foo (1981)  foo bar: foo (1981)  foo bar',
-    'allows for multiple authors: foo, bar (1981)  bar: foo, bar (1981)  bar',
-    'reformats year when components already in right order: foo [1981] bar',
-
   ]
   data.each do |datum|
     description, example, expectation = datum.split ': '
     it description do
       Name.new(example).clean.should == (expectation || 'foo (1981)  bar')
+    end
+  end
+end
+
+describe 'Author' do
+  authors = {
+    'foo' => 'foo',
+    'foo, bar' => 'foo, bar',
+    'foo bar' => 'foo bar',
+  }
+  authors.each do |name, author|
+    it "of ‘#{name}’: #{author}" do
+      Name.new(name).author.should == author
+    end
+  end
+end
+
+describe 'Year' do
+  years = {
+    'foo - bar [1981]' => '1981',
+  }
+  years.each do |name, year|
+    it "Year of ‘#{name}’: #{year}" do
+      Name.new(name).year.should == year
     end
   end
 end
