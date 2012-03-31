@@ -8,13 +8,15 @@ class Name < String
     $&
   end
   def title
-    remainder = self.remove author, year
+    remainder = remove author, year
     /\w[\w\s]*/.match remainder
     $&
   end
   def clean
     "#{author} (#{year})  #{title}"
   end
+
+private
   def remove *to_remove
     to_remove.inject(self) {|remainder, to_remove| remainder.sub(to_remove, '')}
   end
