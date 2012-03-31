@@ -28,7 +28,3 @@ private
   end
 end
 
-def rename original_name
-  Name.new(original_name).clean
-end
-
