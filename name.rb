@@ -1,6 +1,6 @@
 class Name < String
   def author
-    /[\w\s]+/.match self
+    /[\w\s,]+/.match self
     $&.strip
   end
   def year
