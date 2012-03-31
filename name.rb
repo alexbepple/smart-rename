@@ -1,6 +1,12 @@
 class Name < String
+
+  def initialize name
+    super name
+    @consecutive_words = /\p{Word}[\p{Word}\s,]*/u
+  end
+
   def author
-    /[\w\s,]+/.match self
+    @consecutive_words.match self
     $&.strip
   end
   def year
@@ -9,7 +15,7 @@ class Name < String
   end
   def title
     remainder = remove author, year
-    /\w[\w\s]*/.match remainder
+    @consecutive_words.match remainder
     $&.strip
   end
   def clean

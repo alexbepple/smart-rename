@@ -16,8 +16,8 @@ end
 
 describe 'Title' do
   titles = {
-    'foo. foo bar' => 'foo bar',
-    'foo. foo ' => 'foo',
+    'foo - foo bar' => 'foo bar',
+    'foo - foo ' => 'foo',
   }
   titles.each do |name, title|
     it "Title of ‘#{name}’: #{title}" do
@@ -31,6 +31,7 @@ describe 'Author' do
     'foo' => 'foo',
     'foo, bar' => 'foo, bar',
     'foo bar' => 'foo bar',
+    'fóo' => 'fóo',
   }
   authors.each do |name, author|
     it "of ‘#{name}’: #{author}" do
