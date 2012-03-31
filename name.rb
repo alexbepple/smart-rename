@@ -5,7 +5,7 @@ class Name < String
   end
   def year
     /\d{4}/.match self
-    $&
+    $& or ''
   end
   def title
     remainder = remove author, year
