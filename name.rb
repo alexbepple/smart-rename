@@ -10,7 +10,7 @@ class Name < String
   def title
     remainder = remove author, year
     /\w[\w\s]*/.match remainder
-    $&
+    $&.strip
   end
   def clean
     "#{author} (#{year})  #{title}"

@@ -5,12 +5,23 @@ require './name'
 describe 'Smart renamer' do
   data = [
     'preserves good names: foo (1981)  bar',
-    'allows for spaces in title: foo (1981)  foo bar: foo (1981)  foo bar',
   ]
   data.each do |datum|
     description, example, expectation = datum.split ': '
     it description do
       Name.new(example).clean.should == (expectation || 'foo (1981)  bar')
+    end
+  end
+end
+
+describe 'Title' do
+  titles = {
+    'foo (1981)  foo bar' => 'foo bar',
+    'foo (1981) foo ' => 'foo',
+  }
+  titles.each do |name, title|
+    it "Title of ‘#{name}’: #{title}" do
+      Name.new(name).title.should == title
     end
   end
 end
