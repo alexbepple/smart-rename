@@ -1,4 +1,4 @@
-require './rename'
+require './name'
 
 describe 'Smart renamer' do
   it 'preserves a good name' do
