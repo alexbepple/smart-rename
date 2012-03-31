@@ -1,7 +1,7 @@
 class Name < String
   def author
-    /\w+/.match self
-    $&
+    /[\w\s]+/.match self
+    $&.strip
   end
   def year
     /\d{4}/.match self
@@ -9,7 +9,7 @@ class Name < String
   end
   def title
     remainder = self.remove author, year
-    /\w+/.match remainder
+    /\w[\w\s]*/.match remainder
     $&
   end
   def clean
