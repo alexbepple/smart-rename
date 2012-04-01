@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require './name'
+require_relative '../name'
 
 describe 'Smart renamer' do
   data = [
