@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
-$LOAD_PATH.unshift File.dirname(File.realpath(__FILE__))
+project_dir = File.dirname(File.realpath(__FILE__))
+$LOAD_PATH.unshift File.join(project_dir, 'lib')
 
 require 'name'
 
