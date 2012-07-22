@@ -5,6 +5,8 @@ $LOAD_PATH.unshift File.join(project_dir, 'lib')
 
 require 'name'
 
-original_name = ARGV.shift
-new_name = Name.new(original_name).clean
-File.rename original_name, new_name
+ARGV.each do |original_name|
+  new_name = Name.new(original_name).clean
+  puts "#{original_name} => #{new_name}"
+  File.rename original_name, new_name
+end
