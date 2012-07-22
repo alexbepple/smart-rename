@@ -32,6 +32,7 @@ describe 'Author' do
     'foo, bar' => 'foo, bar',
     'foo bar' => 'foo bar',
     'fóo' => 'fóo',
+    'foo 0000 bar' => 'foo', #Year not enclosed
   }
   authors.each do |name, author|
     it "of ‘#{name}’: #{author}" do

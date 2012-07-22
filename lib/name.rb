@@ -2,7 +2,7 @@ class Name < String
 
   def initialize name
     super name
-    @consecutive_words = /\p{Word}[\p{Word}\s,]*/u
+    @consecutive_words = /\p{Alpha}[\p{Alpha}\s,]*/u
   end
 
   def author
