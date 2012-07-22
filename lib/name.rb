@@ -16,10 +16,11 @@ class Name < String
   def title
     remainder = remove author, year
     @consecutive_words.match remainder
-    $&.strip
+    $& and $&.strip
   end
   def clean
-    "#{author} (#{year})  #{title}"
+    return "#{author} (#{year})  #{title}" if author and year and title
+    self
   end
 
 private

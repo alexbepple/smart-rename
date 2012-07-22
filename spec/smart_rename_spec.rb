@@ -2,14 +2,15 @@
 
 require 'name'
 
-describe 'Smart renamer' do
+describe 'Smart renamer preserves' do
   data = [
-    'preserves good names: foo (1981)  bar',
+    'good names: foo (1981)  bar',
+    'unstructured names: foo'
   ]
   data.each do |datum|
     description, example, expectation = datum.split ': '
     it description do
-      Name.new(example).clean.should == (expectation || 'foo (1981)  bar')
+      Name.new(example).clean.should == example
     end
   end
 end
